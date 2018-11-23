@@ -3,6 +3,8 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+SteamVR/
+SteamVR_Input/
 Assets/AssetStoreTools*
 
 # Visual Studio cache directory
