@@ -27,7 +27,6 @@ public class weaponMenuManager : MonoBehaviour
         setUp();
         setAngles();
         setPositions();
-        
     }
 
     // Update is called once per frame

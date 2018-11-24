@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114370524911168918}
   - component: {fileID: 114813008377774446}
   m_Layer: 5
-  m_Name: baseball2
+  m_Name: egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
