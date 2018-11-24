@@ -73,32 +73,25 @@ public class weaponMenuManager : MonoBehaviour
         {
             //setActives();
             //int ind = Mathf.Max(index + leftBound, 0);
-            Debug.Log("OIKE");
             int inde = Mathf.Abs((index + leftBound) % (objects.Count - 1))-1;
             int ind = index + leftBound < 0 ? objects.Count - 1-inde : index + leftBound;
-            Debug.Log("to false " + ind);
             objects[ind].SetActive(false);
             inde = Mathf.Abs((index + rightBound) % (objects.Count - 1))-1;
             ind = index + rightBound > objects.Count-1 ? inde : index + rightBound;
-            Debug.Log("to true " + ind);
             objects[ind].SetActive(true);
             index = index +1 > objects.Count - 1 ?  0: index + 1;
-            Debug.Log("index " + index);
         }
         else if(indexChange == -1)
         {
-            Debug.Log("VASE");
             //setActives();
             int inde = Mathf.Abs((index + rightBound - 1) % (objects.Count - 1))-1;
             int ind = index + rightBound - 1 > objects.Count - 1 ? inde : index + rightBound - 1;
-            Debug.Log("to false " + ind);
             objects[ind].SetActive(false);
             inde = Mathf.Abs((index + leftBound - 1) % (objects.Count - 1))-1;
             ind = index + leftBound - 1 < 0 ? objects.Count-1-inde : index + leftBound - 1;
-            Debug.Log("to true " + ind);
             objects[ind].SetActive(true);
             index = index - 1 < 0 ? objects.Count - 1 : index - 1;
-            Debug.Log("index " + index);
+
         }
         setPositions();
 
@@ -127,7 +120,7 @@ public class weaponMenuManager : MonoBehaviour
         objects[index].transform.position = rotatePoint + offset;
         objects[index].transform.localScale = new Vector3(1, 1);
         weaponSelected = objects[index].name.Substring(0, objects[index].name.Length - 1 - 8);
-        Debug.Log(weaponSelected);
+   
         //objects[index].transform.position = new Vector3
         for (int i = 0; i < leftAngles.Count; i++)
         {
@@ -161,7 +154,6 @@ public class weaponMenuManager : MonoBehaviour
             var offset = new Vector2(Mathf.Sin(objects[j].GetComponent<ImageLogic>().angle), Mathf.Cos(objects[j].GetComponent<ImageLogic>().angle)) * radius;
             objects[j].transform.position = rotatePoint + offset;
         }
-        Debug.Log("loll " + (index - leftBound));
         for(int i = 0; i < index+leftBound; i++)
         {
             objects[i].SetActive(false);
@@ -181,7 +173,7 @@ public class weaponMenuManager : MonoBehaviour
             objects.Add(Instantiate(images[i], transform) as GameObject);
         }
         index = objects.Count / 2;
-        Debug.Log("INDEX " + index);
+
         setToAngle();
 
     }

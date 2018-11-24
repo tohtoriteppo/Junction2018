@@ -76,7 +76,7 @@ public class RightHandScript : MonoBehaviour {
             {
                 menuScrollTimer = Time.time;
                 //Call menu scroller
-                if(posFromCenter>0)
+                if(touchpadX > 0)
                 {
                     weaponUI.GetComponent<weaponMenuManager>().rotate(true);
                 }
@@ -99,12 +99,11 @@ public class RightHandScript : MonoBehaviour {
     void loadWeapons()
     {
         weapons = new Dictionary<string, GameObject>();
-        GameObject[] objs = Resources.LoadAll(weaponFolder, typeof(Object)) as GameObject[];
+        Object[] objs = Resources.LoadAll(weaponFolder, typeof(Object));
         foreach (Object obj in objs)
         {
-            weaponInHand = obj.name.Substring(0,obj.name.Length-7);
-            
-            weapons.Add(weaponInHand, (GameObject)obj);
+            weaponInHand = obj.name;
+            weapons.Add(weaponInHand, Instantiate(obj,transform) as GameObject);
             weapons[weaponInHand].transform.parent = transform;
             weapons[weaponInHand].transform.position = Vector3.zero;
             weapons[weaponInHand].SetActive(false);
