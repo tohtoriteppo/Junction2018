@@ -46,7 +46,7 @@ public class RightHandScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        
+        chooseWeapon();
         if (SteamVR_Input._default.inActions.TouchpadTouch.GetState(hand))
         {
             //Call menu open
@@ -92,8 +92,10 @@ public class RightHandScript : MonoBehaviour {
     }
     void chooseWeapon()
     {
+        Debug.Log(weaponInHand);
         weapons[weaponInHand].SetActive(false);
         weaponInHand = weaponUI.GetComponent<weaponMenuManager>().getSelectedWeapon();
+        
         weapons[weaponInHand].SetActive(true);
     }
     void loadWeapons()

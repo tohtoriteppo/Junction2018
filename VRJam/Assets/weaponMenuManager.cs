@@ -25,10 +25,6 @@ public class weaponMenuManager : MonoBehaviour
         rotatePoint = transform.position;
         images = Resources.LoadAll(folder, typeof(Object));
         setUp();
-        for(int i = 0; i < objects.Count; i++)
-        {
-            Debug.Log(objects[i].name);
-        }
         setAngles();
         setPositions();
         
@@ -37,7 +33,7 @@ public class weaponMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (Input.GetButtonDown("left"))
         {
             rotate(false);
@@ -46,7 +42,7 @@ public class weaponMenuManager : MonoBehaviour
         {
             rotate(true);
         }
-        */
+        
 
     }
     public void rotate(bool right)
@@ -119,7 +115,7 @@ public class weaponMenuManager : MonoBehaviour
         var offset = new Vector2(Mathf.Sin(middleAngle), Mathf.Cos(middleAngle)) * radius;
         objects[index].transform.position = rotatePoint + offset;
         objects[index].transform.localScale = new Vector3(1, 1);
-        weaponSelected = objects[index].name.Substring(0, objects[index].name.Length - 1 - 8);
+        weaponSelected = objects[index].name.Substring(0, objects[index].name.Length - 7);
    
         //objects[index].transform.position = new Vector3
         for (int i = 0; i < leftAngles.Count; i++)
