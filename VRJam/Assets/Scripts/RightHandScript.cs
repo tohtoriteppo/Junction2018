@@ -15,10 +15,8 @@ public class RightHandScript : MonoBehaviour {
     public SteamVR_Action_Vibration haptic;
 
     public float menuTimeout = 1.0f; //Time after which the menu closes
-    public float menuScrollModifier = 1.0f; // 0 - 1
     public float deadZoneX = 1.0f / 2;
-
-    public GameObject kuutio;
+    
     private bool menuFlag = false;
     private float menuOpenedTime = 0.0f;
     private float menuScrollTimer = 0.0f;
@@ -33,24 +31,28 @@ public class RightHandScript : MonoBehaviour {
         
         if (SteamVR_Input._default.inActions.TouchpadTouch.GetState(SteamVR_Input_Sources.RightHand))
         {
+            //Call menu open
             menuFlag = true;
             menuOpenedTime = Time.time;
         }
 
         if (menuOpenedTime + menuTimeout < Time.time)
         {
+            //Call menu closed
             menuFlag = false;
         }
 
+        //Raw touchpad X coordinate
         float touchpadX = SteamVR_Input._default.inActions.TouchpadCoordinates.GetAxis(SteamVR_Input_Sources.RightHand).x;
 
         if (Mathf.Abs(touchpadX) > deadZoneX)
         {
             float posFromCenter = touchpadX < 0 ? touchpadX + deadZoneX : touchpadX - deadZoneX; //Value between -1 to 1
+            //call touch visualizer
             if (menuScrollTimer + 0.7f - posFromCenter / (1 - deadZoneX) * 0.6f <= Time.time)
             {
-                kuutio.transform.Rotate(new Vector3(0.0f, 15.0f, 0.0f), Space.World);
                 menuScrollTimer = Time.time;
+                //Call menu scroller
             }
 
         }
