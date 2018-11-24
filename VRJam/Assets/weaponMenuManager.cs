@@ -13,8 +13,8 @@ public class weaponMenuManager : MonoBehaviour
     private Object[] images;
     private List<GameObject> objects;
     private int index;
-    private int leftBound = -3;
-    private int rightBound = 4;
+    private int leftBound = -2;
+    private int rightBound = 3;
     private float scaleFactor = 0.2f;
     private float middleAngle = 0;
     private List<float> leftAngles;
@@ -37,7 +37,7 @@ public class weaponMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        /*
         if (Input.GetButtonDown("left"))
         {
             rotate(false);
@@ -46,6 +46,7 @@ public class weaponMenuManager : MonoBehaviour
         {
             rotate(true);
         }
+        */
 
     }
     public void rotate(bool right)
