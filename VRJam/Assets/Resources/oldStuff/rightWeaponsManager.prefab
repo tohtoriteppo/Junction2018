@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1626881395084484}
+  m_RootGameObject: {fileID: 1855308325243290}
   m_IsPrefabAsset: 1
---- !u!1 &1626881395084484
+--- !u!1 &1855308325243290
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 224566994114047006}
-  - component: {fileID: 114905873577293788}
+  - component: {fileID: 224025173091218724}
+  - component: {fileID: 114718396288091618}
   m_Layer: 5
   m_Name: rightWeaponsManager
   m_TagString: Untagged
@@ -27,24 +27,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114905873577293788
+--- !u!114 &114718396288091618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626881395084484}
+  m_GameObject: {fileID: 1855308325243290}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bac0478967f022942a77b4d0c3724075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   folder: RightWeapons
---- !u!224 &224566994114047006
+--- !u!224 &224025173091218724
 RectTransform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626881395084484}
+  m_GameObject: {fileID: 1855308325243290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
