@@ -29,12 +29,9 @@ public class WeaponLogic : MonoBehaviour {
         {
             if (rightItems.Contains(collision.collider.name.Substring(0, collision.collider.name.Length - 7)))
             {
-                Debug.Log("UHEY");
                 collision.collider.gameObject.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - transform.position) * 10f;
             }
         }
-        
-        
     }
     public void setUp(bool isWeapon)
     {
