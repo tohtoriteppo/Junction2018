@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2a8e28f2222314aae011ab0f1cbd52, type: 3}
+  m_Name: SteamVR_Input_ActionSet_default_In
+  m_EditorClassIdentifier: 
+  actionSet: {fileID: 0}
+  listDirection: 0
+  actions:
+  - {fileID: 11400000, guid: 8624139c61348a8479a37d4799707085, type: 2}
+  - {fileID: 11400000, guid: c47573ff5b8df3740971aeef22bf64b8, type: 2}
+  - {fileID: 11400000, guid: 0b6c268f627447a4d99a64d25d3fb265, type: 2}
+  - {fileID: 11400000, guid: 7ff37129b1c729845b20b5f51049565c, type: 2}
+  - {fileID: 11400000, guid: c0ad396bac7e024448f69116c099c66d, type: 2}
+  - {fileID: 11400000, guid: 8d0c6b438403704498a8a759e169543a, type: 2}
+  - {fileID: 11400000, guid: a0d548db1c3cc914dab9f8c30affae59, type: 2}
+  TriggerPull: {fileID: 11400000, guid: 8624139c61348a8479a37d4799707085, type: 2}
+  TriggerClick: {fileID: 11400000, guid: c47573ff5b8df3740971aeef22bf64b8, type: 2}
+  TouchpadTouch: {fileID: 11400000, guid: 0b6c268f627447a4d99a64d25d3fb265, type: 2}
+  TouchpadCoordinates: {fileID: 11400000, guid: 7ff37129b1c729845b20b5f51049565c,
+    type: 2}
+  TouchpadClick: {fileID: 11400000, guid: c0ad396bac7e024448f69116c099c66d, type: 2}
+  Squeeze: {fileID: 11400000, guid: 8d0c6b438403704498a8a759e169543a, type: 2}
+  Pose: {fileID: 11400000, guid: a0d548db1c3cc914dab9f8c30affae59, type: 2}
