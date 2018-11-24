@@ -8,7 +8,7 @@ public class weaponMenuManager : MonoBehaviour
 
     private string weaponSelected;
     private float rotateSpeed = 1f;
-    private float radius = 70f;
+    private float radius = 210f;
     private Vector2 rotatePoint;
     private Object[] images;
     private List<GameObject> objects;
