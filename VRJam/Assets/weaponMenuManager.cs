@@ -22,7 +22,7 @@ public class weaponMenuManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rotatePoint = transform.position;
+        rotatePoint = Vector2.zero;
         images = Resources.LoadAll(folder, typeof(Object));
         setUp();
         setAngles();
@@ -33,7 +33,8 @@ public class weaponMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log("OW "+transform.localPosition);
+        /*
         if (Input.GetButtonDown("left"))
         {
             rotate(false);
@@ -42,7 +43,7 @@ public class weaponMenuManager : MonoBehaviour
         {
             rotate(true);
         }
-        
+        */
 
     }
     public void rotate(bool right)
@@ -113,7 +114,10 @@ public class weaponMenuManager : MonoBehaviour
     void setPositions()
     {
         var offset = new Vector2(Mathf.Sin(middleAngle), Mathf.Cos(middleAngle)) * radius;
-        objects[index].transform.position = rotatePoint + offset;
+        Debug.Log(rotatePoint + offset);
+        objects[index].transform.localPosition = rotatePoint + offset;
+        
+        //objects[index].transform.localPosition = Camera.main.scree(rotatePoint + offset);
         objects[index].transform.localScale = new Vector3(1, 1);
         weaponSelected = objects[index].name.Substring(0, objects[index].name.Length - 7);
    
@@ -124,7 +128,7 @@ public class weaponMenuManager : MonoBehaviour
             int thing = index - i - 1;
             int inde = Mathf.Abs((thing) % (objects.Count - 1)) - 1;
             int ind = thing < 0 ? objects.Count - 1 - inde : thing;
-            objects[ind].transform.position = rotatePoint + offset;
+            objects[ind].transform.localPosition = rotatePoint + offset;
             objects[ind].transform.localScale = new Vector3(1 - (i + 1) * scaleFactor, 1 - (i + 1) * scaleFactor);
         }
         for (int i = 0; i < rightAngles.Count; i++)
@@ -133,7 +137,7 @@ public class weaponMenuManager : MonoBehaviour
             int thing = index + i + 1;
             int inde = Mathf.Abs((thing) % (objects.Count - 1)) - 1;
             int ind = thing > objects.Count -1 ? inde : thing;
-            objects[ind].transform.position = rotatePoint + offset;
+            objects[ind].transform.localPosition = rotatePoint + offset;
             objects[ind].transform.localScale = new Vector3(1 - (i + 1) * scaleFactor, 1 - (i + 1) * scaleFactor);
         }
     }
