@@ -12,13 +12,15 @@ public class WeaponLogic : MonoBehaviour {
     public bool weapon = true;
     private GameObject soundEngine;
     private bool collisionFlag = false;
+    public bool fenceStamp = false;
+    public float value = 0f;
     // Use this for initialization
-    
+
     void Start ()
     {
         soundEngine = GameObject.FindGameObjectWithTag("SoundEngineTag");
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		if(!weapon)
@@ -35,9 +37,13 @@ public class WeaponLogic : MonoBehaviour {
         if(weapon)
         {
             GameObject collided = collision.collider.gameObject;
+            var colliderLogic = collided.GetComponent<WeaponLogic>();
+            colliderLogic.value = 1f;
             if (rightItems.Contains(collision.collider.name.Substring(0, collision.collider.name.Length - 7)))
             {
+                colliderLogic.value *= 3f;
                 collided.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - transform.position) * 10f;
+               
                 if (!collided.GetComponent<WeaponLogic>().collisionFlag)
                 {
                     //Call sound
@@ -60,10 +66,12 @@ public class WeaponLogic : MonoBehaviour {
                     transform.parent.GetComponent<RightHandScript>().vibrate(0.3f, 90.0f);
                     collided.GetComponent<WeaponLogic>().collisionFlag = true;
                 }
+
             }
             
         }
     }
+
     public void setUp(bool isWeapon)
     {
         weapon = isWeapon;
