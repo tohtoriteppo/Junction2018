@@ -68,7 +68,7 @@ public class RightHandScript : MonoBehaviour {
 
         if (Mathf.Abs(touchpadX) > deadZoneX)
         {
-            float posFromCenter = touchpadX < 0 ? touchpadX + deadZoneX : touchpadX - deadZoneX; //Value between -1 to 1
+            float posFromCenter = touchpadX < 0 ? Mathf.Abs(touchpadX + deadZoneX) : touchpadX - deadZoneX; //Value between -1 to 1
             //call touch visualizer
             //scrollMenu(posFromCenter);
             
@@ -106,6 +106,7 @@ public class RightHandScript : MonoBehaviour {
             weapons.Add(weaponInHand, Instantiate(obj,transform) as GameObject);
             weapons[weaponInHand].transform.parent = transform;
             weapons[weaponInHand].transform.position = Vector3.zero;
+            weapons[weaponInHand].GetComponent<WeaponLogic>().setUp(true);
             weapons[weaponInHand].SetActive(false);
         }
         weapons[weaponInHand].SetActive(true);
