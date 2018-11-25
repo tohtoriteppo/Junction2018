@@ -14,6 +14,8 @@ public class WeaponLogic : MonoBehaviour {
     private bool collisionFlag = false;
     public bool fenceStamp = false;
     public float value = 0f;
+    private Vector3 lastPos;
+    private Vector3 speed;
     // Use this for initialization
 
     void Start ()
@@ -23,7 +25,10 @@ public class WeaponLogic : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(!weapon)
+
+        speed = lastPos - transform.position;
+        lastPos = transform.position;
+        if (!weapon)
         {
             lifeTime--;
             if(lifeTime<0)
@@ -57,6 +62,7 @@ public class WeaponLogic : MonoBehaviour {
             }
             else
             {
+                
                 if (!collided.GetComponent<WeaponLogic>().collisionFlag)
                 {
                     //Call sound
@@ -68,7 +74,7 @@ public class WeaponLogic : MonoBehaviour {
                 }
 
             }
-            
+            collided.GetComponent<Rigidbody>().velocity += (collision.collider.transform.position - transform.position) * speed.magnitude * 10f;
         }
     }
 
