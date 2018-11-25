@@ -106,7 +106,7 @@ public class RightHandScript : MonoBehaviour {
             weaponInHand = obj.name;
             weapons.Add(weaponInHand, Instantiate(obj,transform) as GameObject);
             weapons[weaponInHand].transform.parent = transform;
-            weapons[weaponInHand].transform.position = Vector3.zero;
+            weapons[weaponInHand].transform.localPosition = Vector3.zero;
             weapons[weaponInHand].GetComponent<WeaponLogic>().setUp(true);
             weapons[weaponInHand].SetActive(false);
         }
