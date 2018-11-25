@@ -133,4 +133,8 @@ public class RightHandScript : MonoBehaviour {
         }
 
     }
+    public void vibrate(float time, float frequency)
+    {
+        haptic.Execute(0.01f, time, frequency, 1.0f, hand);
+    }
 }

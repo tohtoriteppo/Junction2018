@@ -29,8 +29,7 @@ public class NewSpawner : MonoBehaviour {
         if (tmr >= 1.0)
         {
             tmr = 0;
-            //var cube = Instantiate(testCube);
-            GameObject obj = Instantiate(images[Random.Range(0,images.Length)]) as GameObject;
+            var obj = Instantiate(images[Random.Range(0,images.Length)], transform) as GameObject;
             var body = obj.GetComponent<Rigidbody>();
             obj.transform.position = transform.position;
             body.velocity = new Vector3(0, 2, 5);
@@ -40,4 +39,4 @@ public class NewSpawner : MonoBehaviour {
 
     
 
-    }
+}
