@@ -6,7 +6,8 @@ using Valve.VR;
 public class WeaponLogic : MonoBehaviour {
 
     public List<string> rightItems;
-//    public AudioClip hitSound;
+    //    public AudioClip hitSound;
+    public float hitMag = 10.0f;
     public float hitWeight = 10.0f;
     private int lifeTime = 600;
     public bool weapon = true;
@@ -44,10 +45,11 @@ public class WeaponLogic : MonoBehaviour {
             GameObject collided = collision.collider.gameObject;
             var colliderLogic = collided.GetComponent<WeaponLogic>();
             colliderLogic.value = 1f;
+            collided.GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (rightItems.Contains(collision.collider.name.Substring(0, collision.collider.name.Length - 7)))
             {
                 colliderLogic.value *= 3f;
-                collided.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - transform.position) * 10f;
+                collided.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - collision.contacts[0].point).normalized * 2f * speed.magnitude * hitMag;
                
                 if (!collided.GetComponent<WeaponLogic>().collisionFlag)
                 {
@@ -74,7 +76,7 @@ public class WeaponLogic : MonoBehaviour {
                 }
 
             }
-            collided.GetComponent<Rigidbody>().velocity += (collision.collider.transform.position - transform.position) * speed.magnitude * 10f;
+            collided.GetComponent<Rigidbody>().velocity += (collision.collider.transform.position - collision.contacts[0].point).normalized * speed.magnitude * hitMag;
         }
     }
 

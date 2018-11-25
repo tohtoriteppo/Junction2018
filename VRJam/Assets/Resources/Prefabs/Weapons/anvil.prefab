@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54228835394849072}
   - component: {fileID: 75486733488703758}
   - component: {fileID: 114873558373062354}
+  - component: {fileID: 136056677762622886}
   m_Layer: 0
   m_Name: anvil
   m_TagString: Untagged
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1562067234791326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.055815697, z: 2.6}
+  m_LocalPosition: {x: -4.59805, y: 1.1310022, z: -8.674541}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,9 +109,9 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1562067234791326}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2e81b378186c0ed4c98c04cfd4096914, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -138,3 +139,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightItems:
   - hammer
+  hitWeight: 10
+  weapon: 1
+  fenceStamp: 0
+  value: 0
+--- !u!136 &136056677762622886
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1562067234791326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.59909344
+  m_Height: 1.2741852
+  m_Direction: 1
+  m_Center: {x: -0.008521874, y: -0.030044317, z: 0.0130097065}

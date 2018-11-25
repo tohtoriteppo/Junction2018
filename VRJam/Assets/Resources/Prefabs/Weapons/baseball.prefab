@@ -126,13 +126,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightItems:
   - baseballbat
+  hitMag: 10
+  hitWeight: 10
+  weapon: 1
+  fenceStamp: 0
+  value: 0
 --- !u!135 &135056694357097522
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242639721627486}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2e81b378186c0ed4c98c04cfd4096914, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
