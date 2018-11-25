@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33131493740297854}
   - component: {fileID: 23203105217370244}
   m_Layer: 0
-  m_Name: anvilfinal2
+  m_Name: anvil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

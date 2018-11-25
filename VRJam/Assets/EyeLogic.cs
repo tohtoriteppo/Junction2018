@@ -6,11 +6,14 @@ public class EyeLogic : MonoBehaviour {
 
     public GameObject topLash;
     public GameObject botLash;
+    public GameObject endGameScreen;
     private Vector2 topStartMin;
     private Vector2 botStartMax;
     private Vector2 botStartMin;
     private int counter;
     private float factor = 4;
+    private int items;
+    private int loseAmount = 5;
     public bool started = true;
     // Use this for initialization
     void Start () {
@@ -26,7 +29,6 @@ public class EyeLogic : MonoBehaviour {
         {
             counter++;
             float thing = botStartMin.y+counter*factor;
-            Debug.Log("HOOO " + thing);
             if (thing < 0)
             {
                 thing = 0;
@@ -38,5 +40,17 @@ public class EyeLogic : MonoBehaviour {
     public void start()
     {
         started = true;
+    }
+    public void itemInYard()
+    {
+        items++;
+        if(items> loseAmount-1)
+        {
+            end();
+        }
+    }
+    public void end()
+    {
+        endGameScreen.SetActive(true);
     }
 }

@@ -9,7 +9,7 @@ public class NewSpawner : MonoBehaviour {
     public string folder;
     private Object[] images;
     private List<GameObject> objects;
-
+    private float CD = 7.0f;
     // Use this for initialization
     void Start()
     {
@@ -26,14 +26,17 @@ public class NewSpawner : MonoBehaviour {
     void Update()
     {
         tmr += Time.deltaTime;
-        if (tmr >= 1.0)
+        if (tmr >= CD + Random.Range(0,1))
         {
             tmr = 0;
             var obj = Instantiate(images[Random.Range(0,images.Length)], transform) as GameObject;
             var body = obj.GetComponent<Rigidbody>();
             obj.transform.position = transform.position;
-            body.velocity = new Vector3(0, 2, 5);
+            body.velocity = new Vector3(0, 1, 2);
+            float factor = 3.0f;
+            body.angularVelocity = new Vector3(Random.Range(-factor,factor), Random.Range(-factor, factor), Random.Range(-factor, factor));
             obj.GetComponent<WeaponLogic>().setUp(false);
+            CD = CD*0.98f;
         }
     }
 

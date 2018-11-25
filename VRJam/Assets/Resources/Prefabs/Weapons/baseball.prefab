@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114753781926575036}
   - component: {fileID: 54207023200914398}
   - component: {fileID: 135056694357097522}
-  - component: {fileID: 75693784393741824}
   m_Layer: 0
   m_Name: baseball
   m_TagString: Untagged
@@ -39,8 +38,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242639721627486}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: -2.721283, y: -0.7566099, z: 5.2301044}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,22 +96,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!75 &75693784393741824
-ConstantForce:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1242639721627486}
-  m_Enabled: 1
-  m_Force: {x: 0, y: -2, z: 0}
-  m_RelativeForce: {x: 0, y: 0, z: 0}
-  m_Torque: {x: 0, y: 0, z: 0}
-  m_RelativeTorque: {x: 0, y: 0, z: 0}
+  m_CollisionDetection: 2
 --- !u!114 &114753781926575036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,13 +119,14 @@ MonoBehaviour:
   weapon: 1
   fenceStamp: 0
   value: 0
+  bouncy: {fileID: 0}
 --- !u!135 &135056694357097522
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1242639721627486}
-  m_Material: {fileID: 13400000, guid: 2e81b378186c0ed4c98c04cfd4096914, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

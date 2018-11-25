@@ -28,6 +28,9 @@ public class RightHandScript : MonoBehaviour {
     private float scrollCounter = 0;
     private float scrollLimit = 10f;
 
+    private float accumulatedAngle = 0.0f;
+    private float prevAngle = 0.0f;
+
     private Dictionary<string, GameObject> weapons;
 
     // Use this for initialization
@@ -49,9 +52,29 @@ public class RightHandScript : MonoBehaviour {
         if (SteamVR_Input._default.inActions.TouchpadTouch.GetState(hand))
         {
             //Call menu open
+            float currentAngle = getAngle(SteamVR_Input._default.inActions.TouchpadCoordinates.GetAxis(hand));
             weaponUI.SetActive(true);
             menuFlag = true;
             menuOpenedTime = Time.time;
+
+            accumulatedAngle += currentAngle - prevAngle;
+            Debug.Log(accumulatedAngle);
+            
+            if (accumulatedAngle >= Mathf.PI/4)
+            {
+                accumulatedAngle = 0;
+                prevAngle = 0;
+                weaponUI.GetComponent<weaponMenuManager>().rotate(false);
+                chooseWeapon();
+            }
+            else if (accumulatedAngle <= -Mathf.PI/4)
+            {
+                accumulatedAngle = 0;
+                prevAngle = 0;
+                weaponUI.GetComponent<weaponMenuManager>().rotate(true);
+                chooseWeapon();
+            }
+            prevAngle = currentAngle;
         }
 
         if (menuOpenedTime + menuTimeout < Time.time)
@@ -62,6 +85,7 @@ public class RightHandScript : MonoBehaviour {
             menuFlag = false;
         }
 
+        /*
         //Raw touchpad X coordinate
         float touchpadX = SteamVR_Input._default.inActions.TouchpadCoordinates.GetAxis(hand).x;
 
@@ -87,9 +111,10 @@ public class RightHandScript : MonoBehaviour {
             }
             
 
-        }
+        } */
 
     }
+
     void chooseWeapon()
     {
         weapons[weaponInHand].SetActive(false);
@@ -136,5 +161,28 @@ public class RightHandScript : MonoBehaviour {
     public void vibrate(float time, float frequency)
     {
         haptic.Execute(0.01f, time, frequency, 1.0f, hand);
+    }
+
+    float getAngle(Vector2 xy)
+    {
+        float x = xy.x;
+        float y = xy.y;
+        float ret = 0.0f;
+        if (x == 0)
+        {
+            ret = y > 0 ? Mathf.PI / 2 : Mathf.PI * 3 / 2;
+        }
+        else if (x > 0)
+        {
+            ret = y > 0 ? Mathf.Atan(y / x) : 2*Mathf.PI + Mathf.Atan(y / x);
+        }
+        else
+        {
+            ret = y > 0 ? Mathf.PI + Mathf.Atan(y / x) : Mathf.PI + Mathf.Atan(y / x);
+        }
+
+//        ret = x == 0 ? (y > 0 ? Mathf.PI / 2 : Mathf.PI * 3 / 2) : (x > 0 ? (y > 0 ? Mathf.Atan(y / x) : 2 * Mathf.PI - Mathf.Atan(y / x)) : (y > 0 ? Mathf.PI - Mathf.Atan(y / x) : Mathf.PI + Mathf.Atan(y / x)));
+
+        return ret;
     }
 }

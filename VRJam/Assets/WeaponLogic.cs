@@ -7,7 +7,7 @@ public class WeaponLogic : MonoBehaviour {
 
     public List<string> rightItems;
     //    public AudioClip hitSound;
-    public float hitMag = 10.0f;
+    public float hitMag = 1f;
     public float hitWeight = 10.0f;
     private int lifeTime = 600;
     public bool weapon = true;
@@ -17,10 +17,13 @@ public class WeaponLogic : MonoBehaviour {
     public float value = 0f;
     private Vector3 lastPos;
     private Vector3 speed;
+    public PhysicMaterial bouncy;
+
     // Use this for initialization
 
     void Start ()
     {
+        bouncy = Resources.Load("Materials/bouncy") as PhysicMaterial;
         soundEngine = GameObject.FindGameObjectWithTag("SoundEngineTag");
     }
 
@@ -34,6 +37,10 @@ public class WeaponLogic : MonoBehaviour {
             lifeTime--;
             if(lifeTime<0)
             {
+                if(fenceStamp)
+                {
+                    GameObject.FindGameObjectWithTag("canvas").GetComponent<EyeLogic>().itemInYard();
+                }
                 Destroy(gameObject);
             }
         }
@@ -45,12 +52,12 @@ public class WeaponLogic : MonoBehaviour {
             GameObject collided = collision.collider.gameObject;
             var colliderLogic = collided.GetComponent<WeaponLogic>();
             colliderLogic.value = 1f;
-            collided.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //collided.GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (rightItems.Contains(collision.collider.name.Substring(0, collision.collider.name.Length - 7)))
             {
                 colliderLogic.value *= 3f;
-                collided.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - collision.contacts[0].point).normalized * 2f * speed.magnitude * hitMag;
-               
+                //collided.GetComponent<Rigidbody>().velocity = (collision.collider.transform.position - collision.contacts[0].point).normalized * 2f * collision.relativeVelocity.magnitude;
+                collision.gameObject.GetComponent<Collider>().material = bouncy;
                 if (!collided.GetComponent<WeaponLogic>().collisionFlag)
                 {
                     //Call sound
@@ -76,7 +83,8 @@ public class WeaponLogic : MonoBehaviour {
                 }
 
             }
-            collided.GetComponent<Rigidbody>().velocity += (collision.collider.transform.position - collision.contacts[0].point).normalized * speed.magnitude * hitMag;
+            //collided.GetComponent<Rigidbody>().velocity += (collision.collider.transform.position - collision.contacts[0].point).normalized * collision.relativeVelocity.magnitude;
+            Debug.Log("VELOCITY " + speed.magnitude);
         }
     }
 
