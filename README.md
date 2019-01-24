@@ -1,2 +1,2 @@
 # Junction2018
-VR (hopefully) Game jam 
+VR Game jam 
